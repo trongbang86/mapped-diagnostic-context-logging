@@ -27,10 +27,10 @@ import org.springframework.boot.ansi.AnsiOutput.Enabled;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SampleLogbackApplication {
+public class MainApplication {
 
 	private static final Logger logger = LoggerFactory
-			.getLogger(SampleLogbackApplication.class);
+			.getLogger(MainApplication.class);
 
 	@PostConstruct
 	public void logSomething() {
@@ -39,7 +39,7 @@ public class SampleLogbackApplication {
 	}
 
 	public static void main(String[] args) throws Exception {
-		SpringApplication.run(SampleLogbackApplication.class, args).close();
+		SpringApplication.run(MainApplication.class, args).close();
 	}
 
 }
