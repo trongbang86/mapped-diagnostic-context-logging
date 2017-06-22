@@ -17,6 +17,9 @@ version = springBootVersion
 group = 'org.springframework.boot'
 
 dependencies {
-	compile("org.springframework.boot:spring-boot-starter")
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('javax.servlet:jstl')
+	compile('org.apache.tomcat.embed:tomcat-embed-jasper')
+	compile('org.springframework.boot:spring-boot-devtools')
 	testCompile("org.springframework.boot:spring-boot-starter-test")
 }

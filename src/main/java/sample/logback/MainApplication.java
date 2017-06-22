@@ -16,30 +16,27 @@
 
 package sample.logback;
 
-import javax.annotation.PostConstruct;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.ansi.AnsiOutput;
-import org.springframework.boot.ansi.AnsiOutput.Enabled;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.JstlView;
 
 @SpringBootApplication
 public class MainApplication {
-
-	private static final Logger logger = LoggerFactory
-			.getLogger(MainApplication.class);
-
-	@PostConstruct
-	public void logSomething() {
-		logger.debug("Sample Debug Message");
-		logger.trace("Sample Trace Message");
-	}
-
+	
 	public static void main(String[] args) throws Exception {
-		SpringApplication.run(MainApplication.class, args).close();
+		SpringApplication.run(MainApplication.class, args);
+	}
+	
+	@Bean
+	public ViewResolver getViewResolver(){
+	    InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+	    resolver.setPrefix("/WEB-INF/jsp/");
+	    resolver.setSuffix(".jsp");
+	    resolver.setViewClass(JstlView.class);
+	    return resolver;
 	}
 
 }

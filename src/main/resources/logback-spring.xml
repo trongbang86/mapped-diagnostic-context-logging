@@ -1,22 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
+	<appender name="TIME_BASED_FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>./logs/timeBasedlogFile.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<fileNamePattern>./logs/timeBasedlogFile.%d{yyyy-MM}.log
+			</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+
+		<encoder>
+			<pattern>
+				%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<layout class="ch.qos.logback.classic.PatternLayout">
 			<Pattern>
 				%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
 			</Pattern>
 		</layout>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
 	</appender>
 
-	<logger name="sample.logback" level="DEBUG" 
-		additivity="false">
+	<logger name="sample.logback" level="DEBUG" additivity="false">
 		<appender-ref ref="STDOUT" />
+		<appender-ref ref="TIME_BASED_FILE"/>
 	</logger>
-	
-	<root level="error">
+
+	<root level="DEBUG">
 		<appender-ref ref="STDOUT" />
+		<appender-ref ref="TIME_BASED_FILE" level="DEBUG"/>
 	</root>
-	
+
 	<springProfile name="staging">
 		<logger name="sample.logback" level="TRACE" />
 	</springProfile>
