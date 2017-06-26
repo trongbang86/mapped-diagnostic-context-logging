@@ -38,5 +38,6 @@ public class MainApplication {
 	    resolver.setViewClass(JstlView.class);
 	    return resolver;
 	}
+	
 
 }

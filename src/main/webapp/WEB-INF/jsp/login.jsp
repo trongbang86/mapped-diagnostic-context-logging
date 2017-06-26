@@ -5,7 +5,7 @@
             <div class="account-wall">
                 <img class="profile-img" src="/static/photo.jpg"
                     alt="Profile Image">
-                <form class="form-signin">
+                <form class="form-signin" method='post' action='/login'>
                 <input type="text" class="form-control" placeholder="Email" required autofocus>
                 <input type="password" class="form-control" placeholder="Password" required>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">
