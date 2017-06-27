@@ -1,15 +1,19 @@
 package sample.logback;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class LoginController {
+public class SessionController {
 	
-	private static Logger log = LoggerFactory.getLogger(LoginController.class);
+	private static Logger log = LoggerFactory.getLogger(SessionController.class);
 
 	@Autowired
 	private User user;
@@ -21,7 +25,7 @@ public class LoginController {
 	public String index() {
 		if (user.getId() < 0) {
 			log.debug("User has to log in");
-			return "index";
+			return "login";
 		} else {
 			log.debug("User has logged in already");
 			return "redirect:/dashboard";
@@ -42,5 +46,12 @@ public class LoginController {
 			return "redirect:/dashboard";
 		}
 		throw new RuntimeException("User has already logged in");
+	}
+	
+	@RequestMapping(value="/logout")
+	public String logout(HttpSession session) {
+		log.debug("User id={} has logged out", user.getId());
+		session.invalidate();
+		return "redirect:/";
 	}
 }

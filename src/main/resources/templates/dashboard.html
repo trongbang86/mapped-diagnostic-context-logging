@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template :: header"></head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <h1 class="text-center login-title">DASHBOARD</h1>
+            <div class="account-wall">
+                <img class="profile-img" alt="Profile Image" 
+                	th:src="@{/static/{id}.png(id=${session.user.id})}" />
+	            <p th:inline='text'>
+	            	Name: [[${session.user.name }]]
+	            </p>
+	            <a th:href="@{/logout}">Log out</a>
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<footer th:replace="template :: footer"></footer>
+</html>
