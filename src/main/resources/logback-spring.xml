@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
+
+	
+	<appender name="APP_ONLY"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>./logs/app.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- daily rollover -->
+			<fileNamePattern>./logs/app.%d{yyyy-MM}.log
+			</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+
+		<encoder>
+			<pattern>
+				%d{MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %X{user} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
 	<appender name="TIME_BASED_FILE"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>./logs/timeBasedlogFile.log</file>
@@ -33,6 +52,7 @@
 	<logger name="sample.logback" level="DEBUG" additivity="false">
 		<appender-ref ref="STDOUT" />
 		<appender-ref ref="TIME_BASED_FILE"/>
+		<appender-ref ref="APP_ONLY"/>
 	</logger>
 
 	<root level="DEBUG">
