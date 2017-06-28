@@ -1,7 +1,5 @@
 package sample.logback;
 
-import java.util.Enumeration;
-
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;

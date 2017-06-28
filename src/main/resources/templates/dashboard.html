@@ -10,10 +10,10 @@
             <div class="account-wall">
                 <img class="profile-img" alt="Profile Image" 
                 	th:src="@{/static/{id}.png(id=${session.user.id})}" />
-	            <p th:inline='text'>
+	            <p class='text-center' th:inline='text'>
 	            	Name: [[${session.user.name }]]
 	            </p>
-	            <a th:href="@{/logout}">Log out</a>
+	            <a class='text-center new-account' th:href="@{/logout}">Log out</a>
                
             </div>
         </div>
