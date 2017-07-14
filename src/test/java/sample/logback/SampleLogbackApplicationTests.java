@@ -16,12 +16,12 @@
 
 package sample.logback;
 
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.not;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.springframework.boot.test.OutputCapture;
-
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.not;
 
 public class SampleLogbackApplicationTests {
 
@@ -30,14 +30,14 @@ public class SampleLogbackApplicationTests {
 
 	@Test
 	public void testLoadedCustomLogbackConfig() throws Exception {
-		SampleLogbackApplication.main(new String[0]);
+		MainApplication.main(new String[0]);
 		this.outputCapture.expect(containsString("Sample Debug Message"));
 		this.outputCapture.expect(not(containsString("Sample Trace Message")));
 	}
 
 	@Test
 	public void testProfile() throws Exception {
-		SampleLogbackApplication
+		MainApplication
 				.main(new String[] { "--spring.profiles.active=staging" });
 		this.outputCapture.expect(containsString("Sample Debug Message"));
 		this.outputCapture.expect(containsString("Sample Trace Message"));
