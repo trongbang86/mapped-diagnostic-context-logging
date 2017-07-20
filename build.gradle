@@ -18,6 +18,9 @@ apply plugin: 'io.spring.dependency-management'
 
 version = springBootVersion
 group = 'org.springframework.boot'
+ext {
+	nekohtmlVersion = '1.9.21'
+}
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
@@ -25,5 +28,6 @@ dependencies {
 	compile('org.apache.tomcat.embed:tomcat-embed-jasper')
 	compile('org.springframework.boot:spring-boot-devtools')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile("net.sourceforge.nekohtml:nekohtml:${nekohtmlVersion}")
 	testCompile("org.springframework.boot:spring-boot-starter-test")
 }
