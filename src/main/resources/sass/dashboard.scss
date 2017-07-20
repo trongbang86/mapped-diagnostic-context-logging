@@ -1,0 +1,16 @@
+#dashboard1 {
+	@extend #login;
+	
+	div {
+		p {
+			@extend .text-center;
+		}
+		
+		a {
+			@extend .text-center;
+			
+			display: block;
+			margin-top: 10px;
+		}
+	}
+}

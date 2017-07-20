@@ -1,0 +1,26 @@
+{
+  "name": "mapped-diagnostic-context-logging",
+  "version": "1.0.0",
+  "description": "This project demonstrates the ideas of [Mapped Diagnostic Context] using [Spring Boot]\r and [Logback]",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trongbang86/mapped-diagnostic-context-logging.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trongbang86/mapped-diagnostic-context-logging/issues"
+  },
+  "homepage": "https://github.com/trongbang86/mapped-diagnostic-context-logging#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0"
+  }
+}
